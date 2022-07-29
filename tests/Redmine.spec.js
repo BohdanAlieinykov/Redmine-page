@@ -1,4 +1,4 @@
-const { test, expect, chromium } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 const RedminePage = require('../page_objects/redmine.page.js');
 const SighInPage = require('../page_objects/sighIn.page.js');
 const SighUpPage = require('../page_objects/sighUp.page.js');
@@ -9,20 +9,9 @@ test.describe('Redmine page', () => {
     let redminePage = null;
     let sighUpPage = null;
     let sighInPage = null;
-    let browser = null;
-    let context = null;
-    let page = null;
-
-    test.beforeAll( async ()=>{
-        browser = await chromium.launch({ headless:false });
-        context = await browser.newContext();
-        page = await context.newPage()
-        redminePage = new RedminePage(page)
-        sighUpPage = new SighUpPage(page)
-        sighInPage = new SighInPage(page)
-    });
 
     test('Url contain RedmineProjects && Managing projects is displayed', async ({ page }) => {
+        redminePage = new RedminePage(page)
         await page.goto('https://www.redmine.org/');    
         await redminePage.multipleProjectsBtnClick()
         await expect(page).toHaveURL(/.*RedmineProjects/);
@@ -31,6 +20,7 @@ test.describe('Redmine page', () => {
     });
 
     test('User can find list of issues by click on [Обзор] > [Просмотреть все задачи]', async ({ page }) => {
+        redminePage = new RedminePage(page)
         await page.goto('https://www.redmine.org/');
         await redminePage.pathToTableofIssues()
         const tableOfIssues = page.locator('[class="list issues"]');
@@ -38,6 +28,7 @@ test.describe('Redmine page', () => {
     });
 
     test('User can sigh up with valid credentials', async ({ page }) => {
+        sighUpPage = new SighUpPage(page)
         await page.goto('https://www.redmine.org/');
         await sighUpPage.registrationValidData(
             sighUpPage.randomValue, 
@@ -51,6 +42,7 @@ test.describe('Redmine page', () => {
     });
 
     test('User can\'t sigh up with empty email, error message appears', async ({ page }) => {
+        sighUpPage = new SighUpPage(page)
         await page.goto('https://www.redmine.org/');
         await sighUpPage.registrationEmptyEmail(
         'Gerasimysenko1555ss',
@@ -66,6 +58,7 @@ test.describe('Redmine page', () => {
     });
 
     test('User can\'t sigh in with valid credentials without confirmed email', async ({ page }) => {
+        sighInPage = new SighInPage(page)
         await page.goto('https://www.redmine.org/');
         await sighInPage.sighIn('Gerasim1', 'GerasimGerasim221')
         const sighInErrorMsg = page.locator('#flash_error')
