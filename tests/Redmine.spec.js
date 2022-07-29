@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect, chromium } = require('@playwright/test');
 const RedminePage = require('../page_objects/redmine.page.js');
 const SighInPage = require('../page_objects/sighIn.page.js');
 const SighUpPage = require('../page_objects/sighUp.page.js');
