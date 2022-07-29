@@ -9,8 +9,14 @@ test.describe('Redmine page', () => {
     let redminePage = null;
     let sighUpPage = null;
     let sighInPage = null;
+    let browser = null;
+    let context = null;
+    let page = null;
 
     test.beforeAll( async ()=>{
+        browser = await chromium.launch({ headless:false });
+        context = await browser.newContext();
+        page = await context.newPage()
         redminePage = new RedminePage(page)
         sighUpPage = new SighUpPage(page)
         sighInPage = new SighInPage(page)
