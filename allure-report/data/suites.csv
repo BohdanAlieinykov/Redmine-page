@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jul 28 17:36:36 EEST 2022","Thu Jul 28 17:36:45 EEST 2022","8831","chromium","Redmine.spec.js","Redmine page","","","Url contain RedmineProjects && Managing projects is displayed",""
+"passed","Thu Jul 28 17:37:14 EEST 2022","Thu Jul 28 17:37:22 EEST 2022","7634","chromium","Redmine.spec.js","Redmine page","","","User can't sigh in with valid credentials without confirmed email",""
+"passed","Thu Jul 28 17:36:45 EEST 2022","Thu Jul 28 17:36:52 EEST 2022","7261","chromium","Redmine.spec.js","Redmine page","","","User can find list of issues by click on [Обзор] > [Просмотреть все задачи]",""
+"passed","Thu Jul 28 17:37:04 EEST 2022","Thu Jul 28 17:37:14 EEST 2022","10018","chromium","Redmine.spec.js","Redmine page","","","User can't sigh up with empty email, error message appears",""
+"passed","Thu Jul 28 17:36:52 EEST 2022","Thu Jul 28 17:37:04 EEST 2022","12349","chromium","Redmine.spec.js","Redmine page","","","User can sigh up with valid credentials",""
